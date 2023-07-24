@@ -14,9 +14,9 @@ import com.tzp.dagger.databinding.ActivityMainBinding;
 import javax.inject.Inject;
 
 public class LoginActivity extends AppCompatActivity {
-
     ActivityMainBinding binding;
-    LoginViewModel viewModel;
+   @Inject
+    public LoginViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (divisionResponse.getStatus()) {
 
-                    if (divisionResponse != null) {
-                        Toast.makeText(LoginActivity.this, "" + divisionResponse.getData().get(0).getName(), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(LoginActivity.this, "null", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(LoginActivity.this, "" + divisionResponse.getData().get(0).getName(), Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(LoginActivity.this, "error", Toast.LENGTH_SHORT).show();
 

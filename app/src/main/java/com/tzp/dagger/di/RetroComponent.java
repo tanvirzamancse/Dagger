@@ -10,6 +10,6 @@ import dagger.Provides;
 @Singleton
 @Component(modules = {RetroModule.class})
 public interface RetroComponent {
-
    public void inject(LoginViewModel loginViewModel);
+
 }

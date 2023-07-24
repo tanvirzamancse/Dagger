@@ -6,10 +6,12 @@ import com.tzp.dagger.di.DaggerRetroComponent;
 import com.tzp.dagger.di.RetroComponent;
 import com.tzp.dagger.di.RetroModule;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 public class MyApplication extends Application {
 
     RetroComponent retroComponent;
-
     @Override
     public void onCreate() {
         super.onCreate();
