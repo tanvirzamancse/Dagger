@@ -29,5 +29,5 @@ public class LoginRepository {
     public Observable<DivisionResponse> getDivision() {
         return remoteDataSource.serviceInterface.getDivision();
     }
-    
+
 }
