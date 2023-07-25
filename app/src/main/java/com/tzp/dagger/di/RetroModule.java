@@ -24,6 +24,7 @@ public class RetroModule {
     public RetroServiceInterface getRetroServiceInterface() {
 
         if (retrofit == null) {
+
             retrofit = new Retrofit
                     .Builder()
                     .client(getOkHttpClient())
@@ -32,6 +33,7 @@ public class RetroModule {
                     .addConverterFactory(GsonConverterFactory.create(getGson()))
                     .build();
         }
+
         return retrofit.create(RetroServiceInterface.class);
     }
 

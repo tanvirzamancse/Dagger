@@ -14,6 +14,7 @@ import com.tzp.dagger.di.RetroServiceInterface;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;
@@ -25,17 +26,23 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+
 public class LoginViewModel extends AndroidViewModel {
     @Inject
     public LoginRepository loginRepository;
     public MutableLiveData<DivisionResponse> mutableLiveData;
+
+    @Inject
     public LoginViewModel(@NonNull Application application) {
         super(application);
         ((MyApplication) application).getRetroComponent().inject(LoginViewModel.this);
-        mutableLiveData = new MutableLiveData<>();
+
     }
     @Singleton
     public LiveData<DivisionResponse> getDivision() {
+
+        mutableLiveData = new MutableLiveData<>();
 
         loginRepository.getDivision()
                 .subscribeOn(Schedulers.io())
