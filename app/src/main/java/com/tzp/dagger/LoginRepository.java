@@ -1,9 +1,6 @@
 package com.tzp.dagger;
 
-import androidx.lifecycle.LiveData;
-
 import com.tzp.dagger.data.DivisionResponse;
-import com.tzp.dagger.di.RetroServiceInterface;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -15,17 +12,22 @@ import io.reactivex.Observable;
 @Module
 public class LoginRepository {
 
-    @Inject
-    public RetroServiceInterface serviceInterface;
+
+    public LocalDataSource localDataSource;
+    public RemoteDataSource remoteDataSource;
+
 
     @Inject
-    public LoginRepository(RetroServiceInterface serviceInterface) {
-        this.serviceInterface = serviceInterface;
+    public LoginRepository(LocalDataSource localDataSource, RemoteDataSource remoteDataSource) {
+        this.localDataSource = localDataSource;
+        this.remoteDataSource = remoteDataSource;
     }
+
 
     @Singleton
     @Provides
     public Observable<DivisionResponse> getDivision() {
-        return serviceInterface.getDivision();
+        return remoteDataSource.serviceInterface.getDivision();
     }
+    
 }
